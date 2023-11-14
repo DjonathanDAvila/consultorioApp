@@ -20,6 +20,6 @@ public class Patient {
     private Integer id;
     private String name;
     private String sex;
-    private String cpf;
+    private Long cpf;
     private Date bornDate;
 }
