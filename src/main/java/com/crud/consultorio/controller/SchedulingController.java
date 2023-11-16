@@ -1,5 +1,6 @@
 package com.crud.consultorio.controller;
 
+import com.crud.consultorio.DTOs.SchedulingDTO;
 import com.crud.consultorio.model.Scheduling;
 import com.crud.consultorio.model.Status;
 import com.crud.consultorio.repositories.ISchedulingRepository;
@@ -14,8 +15,10 @@ public class SchedulingController {
     private ISchedulingRepository _schedulingRepository;
 
     @PostMapping
-    public Scheduling insertScheduling(@RequestBody Scheduling scheduling) {
-        return _schedulingRepository.save(scheduling);
+    public Scheduling insertScheduling(@RequestBody SchedulingDTO scheduling) {
+        Scheduling newScheduling = new Scheduling(null, scheduling.getPatient(), scheduling.getTest(), scheduling.getStatus(), scheduling.getDate());
+
+        return _schedulingRepository.save(newScheduling);
     };
 
     @GetMapping
@@ -29,7 +32,7 @@ public class SchedulingController {
     }
 
     @PutMapping("/{id}")
-    public Scheduling updateScheduling(@PathVariable int id, Scheduling scheduling){
+    public Scheduling updateScheduling(@PathVariable int id, SchedulingDTO scheduling){
         var newScheduling = _schedulingRepository.findById(id).orElse(null);
 
         if (newScheduling != null){
