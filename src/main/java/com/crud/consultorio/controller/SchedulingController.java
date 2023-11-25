@@ -4,9 +4,9 @@ import com.crud.consultorio.DTOs.SchedulingDTO;
 import com.crud.consultorio.model.Scheduling;
 import com.crud.consultorio.model.Status;
 import com.crud.consultorio.repositories.ISchedulingRepository;
-import com.crud.consultorio.repositories.StatusRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import com.crud.consultorio.repositories.IStatusRepository;
 
 @RestController
 @RequestMapping("/scheduling")

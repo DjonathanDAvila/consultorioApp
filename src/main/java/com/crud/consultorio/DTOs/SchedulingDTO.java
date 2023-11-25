@@ -2,6 +2,7 @@ package com.crud.consultorio.DTOs;
 
 import com.crud.consultorio.model.Patient;
 import com.crud.consultorio.model.Status;
+import com.crud.consultorio.model.Test;
 import lombok.Getter;
 import lombok.Setter;
 
