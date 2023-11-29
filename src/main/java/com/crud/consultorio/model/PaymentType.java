@@ -16,6 +16,7 @@ import javax.persistence.*;
 public class PaymentType {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "payment_type_id")
     private Long id;
     private String type;
 }
