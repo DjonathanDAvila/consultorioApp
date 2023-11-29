@@ -22,5 +22,6 @@ public class Patient {
     private String name;
     private String sex;
     private Long cpf;
+    @Column(name = "born_date")
     private Date bornDate;
 }

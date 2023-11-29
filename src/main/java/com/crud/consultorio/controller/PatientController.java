@@ -36,8 +36,8 @@ public class PatientController {
         return _patientRepository.findById(id).orElse(null);
     }
     
-        @PutMapping("/{id}")
-    public Patient updatePatient(@PathVariable int id, PatientDTO patient){
+    @PutMapping("/{id}")
+    public Patient updatePatient(@PathVariable int id, @RequestBody PatientDTO patient){
         var newPatient = _patientRepository.findById(id).orElse(null);
 
         if (newPatient!= null){
