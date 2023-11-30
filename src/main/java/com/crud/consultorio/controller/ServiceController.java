@@ -1,7 +1,6 @@
 package com.crud.consultorio.controller;
 
 import com.crud.consultorio.DTOs.ServiceDTO;
-import com.crud.consultorio.model.Scheduling;
 import com.crud.consultorio.model.Service;
 import com.crud.consultorio.repositories.IServiceRepository;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -11,6 +11,7 @@ import com.crud.consultorio.repositories.IStatusRepository;
 @RestController
 @RequestMapping("/status")
 public class StatusController {
+    
     @Autowired
     private IStatusRepository statusRepository;
 
