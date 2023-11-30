@@ -14,7 +14,7 @@ public class PaymentTypeController {
     private PaymentTypeRepository paymentTypeRepository;
 
     @PostMapping
-    public PaymentType paymentTypeRepository(@RequestBody PaymentType paymentType) {
+    public PaymentType createPaymentType(@RequestBody PaymentType paymentType) {
         return paymentTypeRepository.save(paymentType);
     }
 
