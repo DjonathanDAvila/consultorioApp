@@ -1,11 +1,9 @@
 package com.crud.consultorio.controller;
 
+
 import com.crud.consultorio.model.Status;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import com.crud.consultorio.repositories.IStatusRepository;
 
 @RestController
@@ -15,9 +13,38 @@ public class StatusController {
     private IStatusRepository statusRepository;
 
     @PostMapping
-    public Status insertStatus(@RequestBody Status satus) {
-        return statusRepository.save(satus);
+    public Status insertStatus(@RequestBody Status status) {
+        return statusRepository.save(status);
     };
+
+    @GetMapping
+    public Iterable<Status> getStatus(){
+        return statusRepository.findAll();
+    }
+
+    @GetMapping("/{id}")
+    public Status getStatus(@PathVariable int id){
+        return statusRepository.findById(id).orElse(null);
+    }
+
+    @PutMapping("/{id}")
+    public Status updateStatus(@PathVariable int id, Status status){
+        var newStatus = statusRepository.findById(id).orElse(null);
+
+        if (newStatus != null){
+
+            newStatus.setDescription(status.getDescription());
+
+            return statusRepository.save(newStatus);
+        }
+
+        return null;
+    }
+
+    @DeleteMapping("/{id}")
+    public void deleteStatus(@PathVariable int id){
+        statusRepository.deleteById(id);
+    }
 }
 
 
