@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 
 @RestController
-@RequestMapping("/Test")
+@RequestMapping("/test")
 public class TestController {
      @Autowired
     private ITestRepository _testRepository;
@@ -44,7 +44,7 @@ public class TestController {
     }
     
     @PutMapping("/{id}")
-    public Test updateScheduling(@PathVariable int id, TestDTO test){
+    public Test updateScheduling(@PathVariable int id, @RequestBody TestDTO test){
         var newTest = _testRepository.findById(id).orElse(null);
 
         if (newTest != null){
