@@ -1,6 +1,7 @@
 
 package com.crud.consultorio.DTOs;
 
+import java.time.LocalDate;
 import java.util.Date;
 import lombok.Getter;
 import lombok.Setter;
@@ -14,6 +15,6 @@ public class PatientDTO {
     private String sex;
     private long CPF;
     @DateTimeFormat(pattern = "yyyy-MM-dd")
-    private Date bornDate;
+    private LocalDate bornDate;
     
 }

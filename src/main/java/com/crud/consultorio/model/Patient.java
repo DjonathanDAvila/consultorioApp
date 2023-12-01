@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.util.Date;
 
 @NoArgsConstructor
@@ -23,5 +24,5 @@ public class Patient {
     private String sex;
     private Long cpf;
     @Column(name = "born_date")
-    private Date bornDate;
+    private LocalDate bornDate;
 }
