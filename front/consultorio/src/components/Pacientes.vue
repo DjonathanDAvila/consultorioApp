@@ -2,6 +2,7 @@
 // defineProps(['title'])
 import axios from 'axios';
 import { ref, onMounted } from 'vue';
+import router from '../main';
 
 const patients = ref([]);
 
@@ -10,6 +11,7 @@ onMounted(() => {
   //   .then(response => {
   //     patients.value = response.data
   //   })
+  debugger
   getPatients();
 })
 
@@ -21,12 +23,8 @@ function getPatients() {
     })
 }
 
-function addPatient() {
-
-}
-
 function editPatient(id) {
-
+  router.push(`/CadPatient/${id}`);
 }
 
 function removePatient(patientId) {
@@ -64,7 +62,7 @@ function removePatient(patientId) {
           <td>{{ p.name }}</td>
           <td>{{ p.sex }}</td>
           <td>{{ p.cpf }}</td>
-          <td>{{ p.bornDate }}</td>
+          <td>{{ new Date(p.bornDate).toLocaleString('pt-BR', {timeZone: 'UTC'}) }}</td>
           <td>
             <button @click="editPatient(p.id)" class="btn btn-warning me-2">Alterar</button>
             <!-- <button @click="validaCarro">Adicionar</button><br> -->

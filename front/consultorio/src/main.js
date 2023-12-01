@@ -20,6 +20,7 @@ const routes = [
   { path: '/consultas', component: Consultas },
   { path: '/testes', component: Testes },
   { path: '/CadPatient', component: CadPatient },
+  { path: '/CadPatient/:id', component: CadPatient },
 
 ]
 
@@ -31,3 +32,5 @@ const router = createRouter({
 const app = createApp(App)
 app.use(router)
 app.mount('#app')
+
+export default router;
