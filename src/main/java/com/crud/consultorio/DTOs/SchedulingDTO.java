@@ -11,8 +11,8 @@ import java.util.Date;
 @Getter
 @Setter
 public class SchedulingDTO {
-    private Patient patient;
-    private Test test;
-    private Status status;
+    private Integer patient;
+    private Integer test;
+    private Integer status;
     private Date date;
 }
