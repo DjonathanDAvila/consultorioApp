@@ -9,7 +9,7 @@ import lombok.Setter;
 @Setter
 public class ServiceDTO {
     private double price;
-    private PaymentType paymentType;
-    private Scheduling scheduling;
+    private Integer paymentType;
+    private Integer scheduling;
     private String obs;
 }
