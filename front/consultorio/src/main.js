@@ -9,8 +9,11 @@ import Inicio from './components/Inicio.vue'
 import Pacientes from './components/Pacientes.vue'
 import Agendamentos from './components/Agendamentos.vue'
 import Consultas from './components/Consultas.vue'
-import Testes from './components/Testes.vue'
-import CadPatient from './components/Cadastros/CadPAtient.vue'
+import CadPaciente from './components/CadPaciente.vue'
+import PutPaciente from './view/PutPaciente.vue'
+import CadTestes from './view/CadTestes.vue' 
+import Testes from './view/Testes.vue'
+import PutTeste from './view/PutTeste.vue'
 import { createRouter, createWebHistory } from 'vue-router'
 
 const routes = [
@@ -18,10 +21,11 @@ const routes = [
   { path: '/pacientes', component: Pacientes },
   { path: '/agendamentos', component: Agendamentos },
   { path: '/consultas', component: Consultas },
-  { path: '/testes', component: Testes },
-  { path: '/CadPatient', component: CadPatient },
-  { path: '/CadPatient/:id', component: CadPatient },
-
+  { path: '/CadPaciente', component: CadPaciente },
+  { path: '/PutPaciente/:id', component: PutPaciente },
+  { path: '/CadTestes', component: CadTestes },
+  { path: '/Testes', component: Testes },
+  { path: '/PutTeste/:id', component: PutTeste }
 ]
 
 const router = createRouter({

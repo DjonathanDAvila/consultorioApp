@@ -16,5 +16,4 @@ public class PatientDTO {
     private long CPF;
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate bornDate;
-    
 }
