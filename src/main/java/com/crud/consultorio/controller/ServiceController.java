@@ -1,9 +1,12 @@
 package com.crud.consultorio.controller;
 
 import com.crud.consultorio.DTOs.ServiceDTO;
+import com.crud.consultorio.model.PaymentType;
 import com.crud.consultorio.model.Scheduling;
 import com.crud.consultorio.model.Service;
+import com.crud.consultorio.repositories.ISchedulingRepository;
 import com.crud.consultorio.repositories.IServiceRepository;
+import com.crud.consultorio.repositories.PaymentTypeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -13,9 +16,17 @@ public class ServiceController {
     @Autowired
     private IServiceRepository _serviceRepository;
 
+    @Autowired
+    private PaymentTypeRepository _paymentTypeRepository;
+
+    @Autowired
+    private ISchedulingRepository _schedulingRepository;
+
     @PostMapping
     public Service insertService(@RequestBody ServiceDTO service) {
-        Service newService = new Service(null, service.getPrice(), service.getPaymentType(), service.getScheduling(), service.getObs());
+        PaymentType paymentType = _paymentTypeRepository.findById(service.getPaymentTypeID()).orElse(null);
+        Scheduling scheduling = _schedulingRepository.findById(service.getSchedulingID()).orElse(null);
+        Service newService = new Service(null, service.getPrice(), paymentType, scheduling, service.getObs());
 
         return _serviceRepository.save(newService);
     };
@@ -31,21 +42,12 @@ public class ServiceController {
     }
 
     @PutMapping("/{id}")
-    public Service updateScheduling(@PathVariable int id, ServiceDTO service){
-        var newService = _serviceRepository.findById(id).orElse(null);
+    public Service updateScheduling(@PathVariable int id, @RequestBody ServiceDTO service){
+        PaymentType paymentType = _paymentTypeRepository.findById(service.getPaymentTypeID()).orElse(null);
+        Scheduling scheduling = _schedulingRepository.findById(service.getSchedulingID()).orElse(null);
+        Service newService = new Service(id, service.getPrice(), paymentType, scheduling, service.getObs());
 
-        if (newService != null){
-
-            newService.setPrice(service.getPrice());
-            newService.setScheduling(service.getScheduling());
-            newService.setPaymentType(service.getPaymentType());
-            newService.setObs(service.getObs());
-
-
-            return _serviceRepository.save(newService);
-        }
-
-        return null;
+        return _serviceRepository.save(newService);
     }
 
     @DeleteMapping("/{id}")

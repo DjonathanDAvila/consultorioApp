@@ -1,8 +1,14 @@
 package com.crud.consultorio.controller;
 
 import com.crud.consultorio.DTOs.SchedulingDTO;
+import com.crud.consultorio.model.Patient;
 import com.crud.consultorio.model.Scheduling;
+import com.crud.consultorio.model.Status;
+import com.crud.consultorio.model.Test;
+import com.crud.consultorio.repositories.IPatientRepository;
 import com.crud.consultorio.repositories.ISchedulingRepository;
+import com.crud.consultorio.repositories.IStatusRepository;
+import com.crud.consultorio.repositories.ITestRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -11,10 +17,20 @@ import org.springframework.web.bind.annotation.*;
 public class SchedulingController {
     @Autowired
     private ISchedulingRepository _schedulingRepository;
+    @Autowired
+    private IPatientRepository _patientRepository;
+    @Autowired
+    private ITestRepository _testRepository;
+    @Autowired
+    private IStatusRepository _statusRepository;
 
     @PostMapping
     public Scheduling insertScheduling(@RequestBody SchedulingDTO scheduling) {
-        Scheduling newScheduling = new Scheduling(null, scheduling.getPatient(), scheduling.getTest(), scheduling.getStatus(), scheduling.getDate());
+        Patient patient = _patientRepository.findById(scheduling.getPatientID()).orElse(null);
+        Test test = _testRepository.findById(scheduling.getTestID()).orElse(null);
+        Status status = _statusRepository.findById(scheduling.getStatusID()).orElse(null);
+
+        Scheduling newScheduling = new Scheduling(null, patient, test, status, scheduling.getDate());
 
         return _schedulingRepository.save(newScheduling);
     };
@@ -30,21 +46,14 @@ public class SchedulingController {
     }
 
     @PutMapping("/{id}")
-    public Scheduling updateScheduling(@PathVariable int id, SchedulingDTO scheduling){
-        var newScheduling = _schedulingRepository.findById(id).orElse(null);
+    public Scheduling updateScheduling(@PathVariable int id, @RequestBody SchedulingDTO scheduling){
+        Patient patient = _patientRepository.findById(scheduling.getPatientID()).orElse(null);
+        Test test = _testRepository.findById(scheduling.getTestID()).orElse(null);
+        Status status = _statusRepository.findById(scheduling.getStatusID()).orElse(null);
 
-        if (newScheduling != null){
+        Scheduling newScheduling = new Scheduling(id, patient, test, status, scheduling.getDate());
 
-            newScheduling.setTest(scheduling.getTest());
-            newScheduling.setDate(scheduling.getDate());
-            newScheduling.setStatus(scheduling.getStatus());
-            newScheduling.setPatient(scheduling.getPatient());
-
-
-            return _schedulingRepository.save(newScheduling);
-        }
-
-        return null;
+        return _schedulingRepository.save(newScheduling);
     }
 
     @DeleteMapping("/{id}")
