@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/paymentType")
+@CrossOrigin(origins = "http://localhost:5173/")
 public class PaymentTypeController {
     @Autowired
     private PaymentTypeRepository paymentTypeRepository;

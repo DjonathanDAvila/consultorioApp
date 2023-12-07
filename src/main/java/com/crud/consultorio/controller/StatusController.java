@@ -8,6 +8,7 @@ import com.crud.consultorio.repositories.IStatusRepository;
 
 @RestController
 @RequestMapping("/status")
+@CrossOrigin(origins = "http://localhost:5173/")
 public class StatusController {
     @Autowired
     private IStatusRepository statusRepository;

@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/service")
+@CrossOrigin(origins = "http://localhost:5173/")
 public class ServiceController {
     @Autowired
     private IServiceRepository _serviceRepository;

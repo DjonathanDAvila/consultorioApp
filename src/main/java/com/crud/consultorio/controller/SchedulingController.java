@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/scheduling")
+@CrossOrigin(origins = "http://localhost:5173/")
 public class SchedulingController {
     @Autowired
     private ISchedulingRepository _schedulingRepository;
