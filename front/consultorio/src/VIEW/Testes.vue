@@ -7,12 +7,10 @@ import router from '../main';
 const testes = ref([]);
 
 onMounted(() => {
-    debugger
     // axios.get('http://localhost:8080/patient')
     //   .then(response => {
     //     patients.value = response.data
     //   })
-    debugger
     getPatients();
 })
 
@@ -39,11 +37,10 @@ function removeTeste(testeID) {
 </script>
 
 <template>
-    <div class="container mt-4">
-        <div class="text-center mt-3"> <!-- Centralizando e adicionando margem acima do botão -->
-            <router-link to="/CadTestes">
-                <button class="btn btn-success">Adicionar</button>
-            </router-link>
+    <div class="container-fluid mt-4">
+        <div class="titulo"> <!-- Centralizando e adicionando margem acima do botão -->
+            <h1>Testes</h1>
+            <router-link to="/CadTestes"><button class="btn btn-success">Adicionar</button></router-link>
         </div>
         <div class="header">
             <table class="table">

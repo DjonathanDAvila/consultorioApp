@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "axios": "^1.6.2",
+    "date-fns": "^2.30.0",
     "vue": "^3.3.8",
     "vue-router": "^4.0.13",
     "vue-sidebar-menu": "^5.2.12",

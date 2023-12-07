@@ -11,7 +11,6 @@ onMounted(() => {
   //   .then(response => {
   //     patients.value = response.data
   //   })
-  debugger
   getPatients();
 })
 
@@ -39,7 +38,8 @@ function removePatient(patientId) {
 
 <template>
   <div class="container mt-4">
-    <div class="text-center mt-3"> <!-- Centralizando e adicionando margem acima do botão -->
+    <div class="titulo"> <!-- Centralizando e adicionando margem acima do botão -->
+      <h1>Pacientes</h1>
       <router-link to="/CadPaciente"><button class="btn btn-success">Adicionar</button> </router-link>
     </div>
     <div class="header">

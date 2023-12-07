@@ -30,7 +30,7 @@ onMounted(() => {
 })
 
 
-const submitForm = () => {    
+const submitForm = () => {
     const testeData = {
         name: nome.value,
         description: descricao.value,
@@ -57,33 +57,48 @@ const submitForm = () => {
 </script>
 
 <template>
-    <form class="column">
-        <div class="col-md-6">
-            <label for="inputText" class="form-label">Nome</label>
-            <input type="text" class="form-control" v-model="nome" required>
+    <div class="row d-flex justify-content-center">
+
+        <div class="titulo"> <!-- Centralizando e adicionando margem acima do botão -->
+            <h1>Alterar teste</h1>
         </div>
-        <div class="col-md-6">
-            <label for="text" class="form-label">Descrição</label>
-            <input type="text" class="form-control" v-model="descricao">
-        </div>
-        <div class="col-md-6">
-            <label for="text" class="form-label">Preço</label>
-            <input type="text" class="form-control" v-model="preco">
-        </div>
-        <div class="col-md-6">
-            <label for="text" class="form-label">Duração</label>
-            <input type="text" class="form-control" v-model="duracao">
-        </div>
-        <div class="col-md-6">
-            <!-- <router-link to="/pacientes"> -->
-            <button @click="submitForm" type="button" class="btn btn-warning">Alterar</button>
-            <!-- </router-link> -->
-        </div>
-    </form>
+
+        <form class="col-md-6">
+            <div class="mb-3">
+                <label for="inputText" class="form-label">Nome</label>
+                <input type="text" class="form-control" v-model="nome" required>
+            </div>
+            <div class="mb-3">
+                <label for="text" class="form-label">Descrição</label>
+                <input type="text" class="form-control" v-model="descricao">
+            </div>
+            <div class="mb-3">
+                <label for="text" class="form-label">Preço</label>
+                <input type="text" class="form-control" v-model="preco">
+            </div>
+            <div class="mb-3">
+                <label for="text" class="form-label">Duração</label>
+                <input type="text" class="form-control" v-model="duracao">
+            </div>
+            <div class="mb-3">
+                <!-- <router-link to="/pacientes"> -->
+                <button @click="submitForm" type="button" class="btn btn-warning">Alterar</button>
+                <!-- </router-link> -->
+            </div>
+        </form>
+    </div>
 </template>
 
 <style scoped>
-.col-md-6 {
+.mb-3 {
     margin-top: 1vw;
+}
+
+.form-label {
+    margin-top: 1vw;
+}
+
+.titulo{
+    margin-left: 970px;
 }
 </style>

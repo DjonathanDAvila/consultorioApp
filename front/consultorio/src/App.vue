@@ -47,9 +47,9 @@ import { ref } from 'vue'
           </svg>
         </a>
         <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-          <router-link to="/" class="nav-link">Principal</router-link>
+          <!-- <router-link to="/" class="nav-link">Principal</router-link> -->
           <router-link to="/pacientes" class="nav-link">Pacientes</router-link>
-          <router-link to="/agendamentos" class="nav-link">Agendamentos</router-link>
+          <router-link to="/Agendamentos" class="nav-link">Agendamentos</router-link>
           <router-link to="/consultas" class="nav-link">Consultas</router-link>
           <router-link to="/Testes" class="nav-link">Testes</router-link>
         </ul>
